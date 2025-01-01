@@ -171,7 +171,7 @@ def test_min_cdar_tx_costs():
     cd.min_cdar()
     w1 = cd.weights
 
-    # Pretend we were initally equal weight
+    # Pretend we were initially equal weight
     cd = setup_efficient_cdar()
     prev_w = np.array([1 / cd.n_assets] * cd.n_assets)
     cd.add_objective(objective_functions.transaction_cost, w_prev=prev_w)

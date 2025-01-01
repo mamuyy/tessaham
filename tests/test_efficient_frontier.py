@@ -152,7 +152,7 @@ def test_min_volatility_tx_costs():
     ef.min_volatility()
     w1 = ef.weights
 
-    # Pretend we were initally equal weight
+    # Pretend we were initially equal weight
     ef = setup_efficient_frontier()
     prev_w = np.array([1 / ef.n_assets] * ef.n_assets)
     ef.add_objective(objective_functions.transaction_cost, w_prev=prev_w)

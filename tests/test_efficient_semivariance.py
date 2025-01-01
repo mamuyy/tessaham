@@ -212,7 +212,7 @@ def test_min_semivariance_tx_costs():
     es.min_semivariance()
     w1 = es.weights
 
-    # Pretend we were initally equal weight
+    # Pretend we were initially equal weight
     es = setup_efficient_semivariance()
     prev_w = np.array([1 / es.n_assets] * es.n_assets)
     es.add_objective(objective_functions.transaction_cost, w_prev=prev_w)
