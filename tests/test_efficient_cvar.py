@@ -175,7 +175,7 @@ def test_min_cvar_tx_costs():
     cv.min_cvar()
     w1 = cv.weights
 
-    # Pretend we were initally equal weight
+    # Pretend we were initially equal weight
     cv = setup_efficient_cvar()
     prev_w = np.array([1 / cv.n_assets] * cv.n_assets)
     cv.add_objective(objective_functions.transaction_cost, w_prev=prev_w)

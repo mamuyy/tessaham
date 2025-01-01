@@ -9,11 +9,10 @@ install:  ## Install a virtual environment with all extras
 	@curl -LsSf https://astral.sh/uv/install.sh | sh
 	@uv venv
 	@uv sync -vv --all-extras
-	@echo "Virtual environment created with all extras. Activate with:"
-	@echo "source .venv/bin/activate"
+
 
 .PHONY: fmt
-fmt:  ## Run autoformatting and linting
+fmt:  install ## Run autoformatting and linting
 	@uv pip install pre-commit
 	@uv run pre-commit install
 	@uv run pre-commit run --all-files

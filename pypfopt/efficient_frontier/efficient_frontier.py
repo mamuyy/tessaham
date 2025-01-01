@@ -163,7 +163,7 @@ class EfficientFrontier(base_optimizer.BaseConvexOptimizer):
     def _make_weight_sum_constraint(self, is_market_neutral):
         """
         Helper method to make the weight sum constraint. If market neutral,
-        validate the weights proided in the constructor.
+        validate the weights provided in the constructor.
         """
         if is_market_neutral:
             #  Check and fix bounds

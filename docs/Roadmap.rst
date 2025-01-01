@@ -103,7 +103,7 @@ Minor bug fixes
 - Grouped sector constraints
 - Improved error tracebacks
 - Adding new cookbook for examples (in progress).
-- Packaging: added bettter instructions for windows, added docker support.
+- Packaging: added better instructions for windows, added docker support.
 
 1.2.1
 -----
