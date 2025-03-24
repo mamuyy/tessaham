@@ -1,14 +1,14 @@
-FROM python:3.11-slim-buster
+FROM python:3.12-slim-bookworm
 
 WORKDIR pypfopt
 COPY requirements.txt .
 
-RUN pip install --upgrade pip \
+RUN pip install --upgrade pip && \
     pip install yfinance && \
-    pip install poetry \
-    pip install ipython \
-    pip install jupyter \
-    pip install pytest \
+    pip install poetry && \
+    pip install ipython && \
+    pip install jupyter && \
+    pip install pytest && \
     pip install -r requirements.txt
 
 COPY . .
