@@ -4,6 +4,7 @@ import pandas as pd
 from pypfopt import EfficientFrontier, risk_models, expected_returns, plotting
 import matplotlib.pyplot as plt
 from cvxpy import ECOS
+import io
 
 st.set_page_config(layout="wide")
 st.title("📈 Optimasi Portofolio Saham Indonesia (IDX) 🇮🇩")
@@ -33,10 +34,15 @@ if st.button("🔍 Optimasi Max Sharpe"):
             ef = EfficientFrontier(mu, S, solver=ECOS)
             weights = ef.max_sharpe()
             cleaned_weights = ef.clean_weights()
+            df = pd.DataFrame.from_dict(cleaned_weights, orient='index', columns=['Weight'])
 
             # Tampilkan hasil
             st.subheader("📊 Rekomendasi Alokasi Portofolio:")
-            st.dataframe(pd.DataFrame.from_dict(cleaned_weights, orient='index', columns=['Weight']))
+            st.dataframe(df)
+
+            # Tombol download CSV
+            csv = df.to_csv().encode("utf-8")
+            st.download_button("📥 Download Bobot ke Excel", csv, "bobot_portofolio.csv", "text/csv")
 
             # Plot bobot
             st.subheader("📉 Plot Bobot Saham")
