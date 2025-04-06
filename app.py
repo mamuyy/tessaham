@@ -15,8 +15,11 @@ if st.button("Optimasi Max Sharpe"):
     data = yf.download(tickers, start=start, end=end)["Close"]
     mu = expected_returns.mean_historical_return(data)
     S = risk_models.sample_cov(data)
-    ef = EfficientFrontier(mu, S)
-    weights = ef.max_sharpe(solver="SCS")
+    from cvxpy import SCS  # Tambahkan ini di atas
+
+ef = EfficientFrontier(mu, S, solver=SCS)
+weights = ef.max_sharpe()
+
     cleaned_weights = ef.clean_weights()
     st.subheader("📊 Rekomendasi Alokasi Portofolio:")
     st.dataframe(pd.DataFrame.from_dict(cleaned_weights, orient='index', columns=['Weight']))
