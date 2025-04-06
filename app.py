@@ -28,7 +28,7 @@ if st.button("🔍 Optimasi Max Sharpe"):
         S = risk_models.sample_cov(data)
 
         # Optimasi
-        ef = EfficientFrontier(mu, S, solver=SCS)
+        ef = EfficientFrontier(mu, S, solver="ECOS")
         weights = ef.max_sharpe()
         cleaned_weights = ef.clean_weights()
 
