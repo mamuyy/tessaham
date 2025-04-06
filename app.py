@@ -54,5 +54,12 @@ if st.button("🔍 Optimasi Max Sharpe"):
             ax2.legend()
             st.pyplot(fig2)
 
+            # Ringkasan performa
+            st.subheader("📈 Ringkasan Kinerja Portofolio")
+            perf = ef.portfolio_performance(verbose=True)
+            st.text(f"Expected Annual Return: {perf[0]*100:.2f}%")
+            st.text(f"Annual Volatility: {perf[1]*100:.2f}%")
+            st.text(f"Sharpe Ratio: {perf[2]:.2f}")
+
     except Exception as e:
         st.error(f"❌ Terjadi error saat proses optimasi: {e}")
