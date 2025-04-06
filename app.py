@@ -16,17 +16,14 @@ if st.button("Optimasi Max Sharpe"):
     mu = expected_returns.mean_historical_return(data)
     S = risk_models.sample_cov(data)
     ef = EfficientFrontier(mu, S)
-    weights = ef.max_sharpe()
+    weights = ef.max_sharpe(solver="SCS")
     cleaned_weights = ef.clean_weights()
-
     st.subheader("📊 Rekomendasi Alokasi Portofolio:")
     st.dataframe(pd.DataFrame.from_dict(cleaned_weights, orient='index', columns=['Weight']))
-
     st.subheader("📉 Plot Bobot Saham")
     fig, ax = plt.subplots()
     plotting.plot_weights(cleaned_weights, ax=ax)
     st.pyplot(fig)
-
     st.subheader("🌀 Efficient Frontier")
     fig2, ax2 = plt.subplots()
     ef_plot = EfficientFrontier(mu, S)
