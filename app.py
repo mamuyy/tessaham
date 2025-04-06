@@ -86,8 +86,10 @@ if not data.empty:
     latest_ma5 = data["MA5"].iloc[-1]
     latest_ma20 = data["MA20"].iloc[-1]
 
-    if data[["MA5", "MA20"]].dropna().empty:
+if data[["MA5", "MA20"]].dropna().empty:
     st.warning("Data terlalu sedikit untuk menghitung MA5 dan MA20.")
+else:
+    st.line_chart(data[["Close", "MA5", "MA20"]])
 else:
     st.line_chart(data[["Close", "MA5", "MA20"]])
 
